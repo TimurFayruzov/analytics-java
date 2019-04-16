@@ -31,9 +31,12 @@ public class Main {
       for (int j = 0; j < 10; j++) {
         Map<String, Object> properties = new LinkedHashMap<>();
         properties.put("count", count.incrementAndGet());
+        Map<String, Object> context = new LinkedHashMap<>();
+        context.put("count", count.incrementAndGet());
         analytics.enqueue(
             TrackMessage.builder("Java Test")
                 .properties(properties)
+                 .context(context)
                 .anonymousId(anonymousId)
                 .userId(userId));
       }
